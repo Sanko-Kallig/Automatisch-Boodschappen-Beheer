@@ -9,11 +9,11 @@ namespace se21_orientatietest
     public abstract class Verkoop : IInkomsten
     {
         public int Aantal { get; set; }
-        public decimal Bedrag { get; }
+        public decimal Bedrag { get; set; }
 
         public DateTime Tijdstip { get; set; }
 
-        public abstract BTWTarief BTWTarief { get; }
+        public abstract BTWTarief BTWTarief { get;  }
 
         public abstract decimal Prijs { get; }
 
@@ -24,7 +24,7 @@ namespace se21_orientatietest
 
         public override string ToString()
         {
-            return Tijdstip.ToString() + "-" + Aantal + "-" + Bedrag;
+            return "Datum: "+ Tijdstip.ToString() + "-" + Aantal + "-" + Bedrag;
         }
     }
 }

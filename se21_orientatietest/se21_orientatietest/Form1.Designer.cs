@@ -1,4 +1,4 @@
-﻿namespace _2015_NJ_SE2_BP3_Beginsituatie
+﻿namespace se21_orientatietest
 {
     partial class Form1
     {
@@ -107,6 +107,7 @@
             this.btnNieuweVerhuringToevoegen.TabIndex = 3;
             this.btnNieuweVerhuringToevoegen.Text = "Toevoegen";
             this.btnNieuweVerhuringToevoegen.UseVisualStyleBackColor = true;
+            this.btnNieuweVerhuringToevoegen.Click += new System.EventHandler(this.btnNieuweVerhuringToevoegen_Click);
             // 
             // label1
             // 
@@ -144,7 +145,9 @@
             this.cbNieuweVerhuring.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNieuweVerhuring.FormattingEnabled = true;
             this.cbNieuweVerhuring.Items.AddRange(new object[] {
-            "Feestzaal"});
+            "Feestzaal",
+            "Danszaal",
+            "Bar"});
             this.cbNieuweVerhuring.Location = new System.Drawing.Point(6, 19);
             this.cbNieuweVerhuring.Name = "cbNieuweVerhuring";
             this.cbNieuweVerhuring.Size = new System.Drawing.Size(125, 21);
@@ -217,6 +220,7 @@
             this.btnNieuweVerkoopToevoegen.TabIndex = 7;
             this.btnNieuweVerkoopToevoegen.Text = "Toevoegen";
             this.btnNieuweVerkoopToevoegen.UseVisualStyleBackColor = true;
+            this.btnNieuweVerkoopToevoegen.Click += new System.EventHandler(this.btnNieuweVerkoopToevoegen_Click);
             // 
             // label4
             // 
@@ -254,7 +258,9 @@
             this.cbNieuweVerkoop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNieuweVerkoop.FormattingEnabled = true;
             this.cbNieuweVerkoop.Items.AddRange(new object[] {
-            "Sterkedrank"});
+            "Sterkedrank",
+            "Lichtedrank",
+            "Gematigddrank"});
             this.cbNieuweVerkoop.Location = new System.Drawing.Point(6, 19);
             this.cbNieuweVerkoop.Name = "cbNieuweVerkoop";
             this.cbNieuweVerkoop.Size = new System.Drawing.Size(125, 21);

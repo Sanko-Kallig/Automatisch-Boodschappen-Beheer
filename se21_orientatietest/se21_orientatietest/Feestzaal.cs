@@ -8,9 +8,11 @@ namespace se21_orientatietest
 {
     public class Feestzaal : Verhuur
     {
-        public readonly BTWTarief BTWTarief { get; private set { BTWTarief = BTWTarief.Hoog; } }
+        public readonly BTWTarief btwtarief = BTWTarief.Hoog;
+        public readonly decimal prijsperuur = 10;
+        public override BTWTarief BTWTarief { get { return btwtarief; } }
 
-        public readonly decimal PrijsPerUur { get; private set { PrijsPerUur = 10; } }
+        public override decimal PrijsPerUur { get { return prijsperuur; } }
 
         public Feestzaal(DateTime tijdstip, int urenVerhuurd): base(tijdstip, urenVerhuurd)
         {
@@ -19,7 +21,7 @@ namespace se21_orientatietest
 
         public override string ToString()
         {
-            return "Feestzaal" +"Prijs per uur: "+ PrijsPerUur + "BTW: " + BTWTarief;
+            return base.ToString() + "Feestzaal" + "Prijs per uur: " + PrijsPerUur + "BTW: " + BTWTarief;
         }
     }
 }

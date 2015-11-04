@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace se21_orientatietest
 {
-    class Sterkedrank : Verkoop
+    public class Sterkedrank : Verkoop
     {
-        public readonly BTWTarief BTWTarief { get; private set { BTWTarief = BTWTarief.Hoog; } }
-
-        public readonly decimal Prijs { get; private set { Prijs = 10; } }
+        public readonly BTWTarief btwtarief = BTWTarief.Hoog;
+        public readonly decimal prijs = 10;
+        public override BTWTarief BTWTarief { get { return btwtarief; } }
+        public override decimal Prijs { get { return prijs; } }
 
         public Sterkedrank(int aantal) : base(aantal)
         {

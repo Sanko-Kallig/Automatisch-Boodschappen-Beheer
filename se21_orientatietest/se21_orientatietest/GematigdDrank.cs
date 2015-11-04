@@ -8,9 +8,10 @@ namespace se21_orientatietest
 {
     public class GematigdDrank : Verkoop
     {
-        public readonly BTWTarief BTWTarief { get; private set { BTWTarief = BTWTarief.Laag; } }
-
-        public readonly decimal Prijs { get; private set { Prijs = 10; } }
+        public readonly BTWTarief btwtarief = BTWTarief.Hoog;
+        public readonly decimal prijs = 10;
+        public override BTWTarief BTWTarief { get { return btwtarief; } }
+        public override decimal Prijs { get { return prijs; } }
 
         public GematigdDrank(int aantal) : base(aantal)
         {
@@ -21,6 +22,5 @@ namespace se21_orientatietest
         {
             return base.ToString() + "Gematigd Drank" + "-" + Prijs + "-" + "BTW: " + BTWTarief;
         }
-    }
     }
 }

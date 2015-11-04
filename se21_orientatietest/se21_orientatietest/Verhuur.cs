@@ -10,13 +10,13 @@ namespace se21_orientatietest
     {
         public int UrenVerhuurd { get; set; }
 
-        public decimal Bedrag { get; }
+        public decimal Bedrag { get; set; }
 
         public DateTime Tijdstip { get; set; }
 
-        public abstract readonly BTWTarief BTWTarief { get; set; }
+        public abstract BTWTarief BTWTarief { get; }
 
-        public abstract readonly decimal PrijsPerUur { get; set; }
+        public abstract decimal PrijsPerUur { get; }
 
         public Verhuur(DateTime tijdstip, int urenVerhuurd)
         {
@@ -26,7 +26,7 @@ namespace se21_orientatietest
 
         public override string ToString()
         {
-            return Tijdstip.ToString() + UrenVerhuurd + Bedrag;
+            return "Datum: "+ Tijdstip.ToString() +" - " +"Uren verhuurd: " + UrenVerhuurd + Bedrag;
         }
     }
 }
