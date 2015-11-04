@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace se21_orientatietest
 {
-    public class Feestzaal : Verhuur
+    public class Danszaal : Verhuur
     {
-        public readonly BTWTarief BTWTarief { get; private set { BTWTarief = BTWTarief.Hoog; } }
+        public readonly BTWTarief BTWTarief { get; private set { BTWTarief = BTWTarief.Laag; } }
 
         public readonly decimal PrijsPerUur { get; private set { PrijsPerUur = 10; } }
 
-        public Feestzaal(DateTime tijdstip, int urenVerhuurd): base(tijdstip, urenVerhuurd)
+        public Danszaal(DateTime tijdstip, int urenVerhuurd): base(tijdstip, urenVerhuurd)
         {
 
         }
@@ -21,5 +21,6 @@ namespace se21_orientatietest
         {
             return "Feestzaal" +"Prijs per uur: "+ PrijsPerUur + "BTW: " + BTWTarief;
         }
+    }
     }
 }

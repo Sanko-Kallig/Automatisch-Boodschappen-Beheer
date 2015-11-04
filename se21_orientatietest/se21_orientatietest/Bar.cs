@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace se21_orientatietest
 {
-    class Sterkedrank : Verkoop
+    public class Bar : Verhuur
     {
         public readonly BTWTarief BTWTarief { get; private set { BTWTarief = BTWTarief.Hoog; } }
 
-        public readonly decimal Prijs { get; private set { Prijs = 10; } }
+        public readonly decimal PrijsPerUur { get; private set { PrijsPerUur = 10; } }
 
-        public Sterkedrank(int aantal) : base(aantal)
+        public Bar(DateTime tijdstip, int urenVerhuurd): base(tijdstip, urenVerhuurd)
         {
 
         }
 
         public override string ToString()
         {
-            return base.ToString() + "Sterke Drank" + "-" + Prijs + "-" + "BTW: " + BTWTarief;
+            return "Bar -" +"Prijs per uur: "+ PrijsPerUur + "- BTW: " + BTWTarief;
         }
+    }
     }
 }

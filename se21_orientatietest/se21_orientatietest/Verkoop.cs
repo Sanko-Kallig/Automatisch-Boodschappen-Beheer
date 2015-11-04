@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace se21_orientatietest
 {
-    class Verkoop
+    public abstract class Verkoop : IInkomsten
     {
+        public int Aantal { get; set; }
+        public decimal Bedrag { get; }
+
+        public DateTime Tijdstip { get; set; }
+
+        public abstract BTWTarief BTWTarief { get; }
+
+        public abstract decimal Prijs { get; }
+
+        public Verkoop(int aantal)
+        {
+            this.Aantal = aantal;
+        }
+
+        public override string ToString()
+        {
+            return Tijdstip.ToString() + "-" + Aantal + "-" + Bedrag;
+        }
     }
 }

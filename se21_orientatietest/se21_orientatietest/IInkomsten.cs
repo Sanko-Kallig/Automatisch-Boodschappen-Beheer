@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace se21_orientatietest
 {
-    class IInkomsten
+    public interface IInkomsten
     {
+        public decimal Bedrag { get; }
+        public readonly BTWTarief BTWTarief { get; }
+        public DateTime Tijdstip { get; }
     }
 }

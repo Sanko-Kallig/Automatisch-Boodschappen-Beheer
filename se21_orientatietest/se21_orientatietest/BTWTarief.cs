@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace se21_orientatietest
 {
-    class BTWTarief
+    public enum BTWTarief
     {
+        Ongespecificeerd,
+        Laag,
+        Hoog
     }
 }
