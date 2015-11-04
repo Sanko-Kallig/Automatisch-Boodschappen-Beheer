@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace se21_orientatietest
+namespace _2015_NJ_SE2_BP3_Beginsituatie
 {
     public partial class Form1 : Form
     {
