@@ -45,7 +45,7 @@ namespace se21_orientatietest
                     ret.Add(i);
                 }
             }
-            ret.Sort((x, y) => y.Tijdstip.CompareTo(x.Tijdstip))
+            ret.Sort((x, y) => y.Tijdstip.CompareTo(x.Tijdstip));
             return ret;
         }
 
@@ -63,7 +63,7 @@ namespace se21_orientatietest
             }
             foreach (IInkomsten i in temp)
             {
-                if(tarief == BTWTarief.Ongespecificeerd)
+                if (tarief == BTWTarief.Ongespecificeerd)
                 {
                     ret.Add(i);
                 }
@@ -79,22 +79,23 @@ namespace se21_orientatietest
 
         public void Exporteer(string path, BTWTarief tarief)
         {
-            if(tarief == BTWTarief.Ongespecificeerd)
+            if (tarief == BTWTarief.Ongespecificeerd)
             {
                 List<IInkomsten> templist = Overzicht(tarief);
 
             }
             else
             {
-            List<IInkomsten> templist = Overzicht(tarief);
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                foreach (IInkomsten i in templist)
-                {               
-                    writer.WriteLine(i.ToString());                  
+                List<IInkomsten> templist = Overzicht(tarief);
+                using (StreamWriter writer = new StreamWriter(path))
+                {
+                    foreach (IInkomsten i in templist)
+                    {
+                        writer.WriteLine(i.ToString());
+                    }
                 }
-        }
             }
 
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace se21_orientatietest
 
         private void btnNieuweVerhuringToevoegen_Click(object sender, EventArgs e)
         {
-            if(cbNieuweVerhuring.SelectedValue != null)
+            if(cbNieuweVerhuring.SelectedItem != null)
             {
                 DateTime datetime = dtpNieuweVerhuringTijdstip.Value;
                 int uren = Convert.ToInt32(nudNieuweVerhuringUren.Value);
@@ -65,7 +65,7 @@ namespace se21_orientatietest
 
         private void btnNieuweVerkoopToevoegen_Click(object sender, EventArgs e)
         {
-            if(cbNieuweVerkoop.SelectedValue != null)
+            if(cbNieuweVerkoop.SelectedItem != null)
             {
                 int aantal = Convert.ToInt32(nudNieuweVerkoopAantal.Value);
                 switch (cbNieuweVerkoop.SelectedItem.ToString())
@@ -99,8 +99,15 @@ namespace se21_orientatietest
         private void btnOverzichtDatumbereik_Click(object sender, EventArgs e)
         {
             List<IInkomsten> test = administratie.Overzicht(dtpOverzichtVan.Value, dtpOverzichtTot.Value);
-            var message = string.Join(Environment.NewLine, test.ToString());
-            MessageBox.Show(message);
+            string s;
+            List<string> slist = new List<string>();
+            foreach(IInkomsten i in test)
+            {
+                s = i.Tijdstip.ToString() + " - " + i.BTWTarief.ToString() + " - " + i.Bedrag.ToString();
+                slist.Add(s);
+            }
+            var message = string.Join(Environment.NewLine, slist.ToString());
+            MessageBox.Show(slist);
         }
 
         private void btnOverzichtExporteer_Click(object sender, EventArgs e)
