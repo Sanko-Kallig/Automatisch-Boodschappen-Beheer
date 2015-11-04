@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace se21_orientatietest
 {
-    public partial class Form1 : Form
+    public partial class SanderKochForm : Form
     {
         Administratie administratie;
-        public Form1()
+        public SanderKochForm()
         {
             InitializeComponent();
             administratie = new Administratie();
@@ -99,7 +99,7 @@ namespace se21_orientatietest
         private void btnOverzichtDatumbereik_Click(object sender, EventArgs e)
         {
             List<IInkomsten> test = administratie.Overzicht(dtpOverzichtVan.Value, dtpOverzichtTot.Value);
-            var message = string.Join(Environment.NewLine, test);
+            var message = string.Join(Environment.NewLine, test.ToString());
             MessageBox.Show(message);
         }
 

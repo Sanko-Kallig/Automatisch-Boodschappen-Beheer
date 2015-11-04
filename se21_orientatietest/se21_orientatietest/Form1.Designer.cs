@@ -1,6 +1,6 @@
 ﻿namespace se21_orientatietest
 {
-    partial class Form1
+    partial class SanderKochForm
     {
         /// <summary>
         /// Required designer variable.
@@ -368,7 +368,7 @@
             this.dtpOverzichtVan.TabIndex = 9;
             this.dtpOverzichtVan.Value = new System.DateTime(2015, 11, 4, 14, 30, 0, 0);
             // 
-            // Form1
+            // SanderKochForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -378,7 +378,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "SanderKochForm";
             this.Text = "Sporthal De Ploeterende Panda";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

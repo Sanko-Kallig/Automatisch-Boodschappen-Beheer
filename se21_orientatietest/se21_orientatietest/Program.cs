@@ -16,7 +16,7 @@ namespace se21_orientatietest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SanderKochForm());
         }
     }
 }

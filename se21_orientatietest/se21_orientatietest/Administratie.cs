@@ -45,7 +45,7 @@ namespace se21_orientatietest
                     ret.Add(i);
                 }
             }
-            //ret.Sort((x, y) => DateTime.Compare(x.Tijdstip, y.Tijdstip));
+            ret.Sort((x, y) => y.Tijdstip.CompareTo(x.Tijdstip))
             return ret;
         }
 
@@ -73,12 +73,19 @@ namespace se21_orientatietest
                     ret.Add(i);
                 }
             }
-            ret.Sort((x, y) => DateTime.Compare(x.Tijdstip, y.Tijdstip));
+            ret.Sort((x, y) => y.Tijdstip.CompareTo(x.Tijdstip));
             return ret;
         }
 
         public void Exporteer(string path, BTWTarief tarief)
         {
+            if(tarief == BTWTarief.Ongespecificeerd)
+            {
+                List<IInkomsten> templist = Overzicht(tarief);
+
+            }
+            else
+            {
             List<IInkomsten> templist = Overzicht(tarief);
             using (StreamWriter writer = new StreamWriter(path))
             {
@@ -87,5 +94,7 @@ namespace se21_orientatietest
                     writer.WriteLine(i.ToString());                  
                 }
         }
+            }
+
     }
 }
