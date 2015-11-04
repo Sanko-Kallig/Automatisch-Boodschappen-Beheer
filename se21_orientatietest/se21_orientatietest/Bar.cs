@@ -8,7 +8,7 @@ namespace se21_orientatietest
 {
     public class Bar : Verhuur
     {
-        public readonly BTWTarief btwtarief = BTWTarief.Hoog;
+        public readonly BTWTarief btwtarief = BTWTarief.Laag;
         public readonly decimal prijsperuur = 10;
         public override BTWTarief BTWTarief { get { return btwtarief; } }
 

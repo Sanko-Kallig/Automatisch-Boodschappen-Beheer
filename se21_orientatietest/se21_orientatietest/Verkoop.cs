@@ -20,6 +20,7 @@ namespace se21_orientatietest
         public Verkoop(int aantal)
         {
             this.Aantal = aantal;
+            Tijdstip = DateTime.Now;
         }
 
         public override string ToString()

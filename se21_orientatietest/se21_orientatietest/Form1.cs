@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,22 +22,30 @@ namespace se21_orientatietest
 
         private void btnNieuweVerhuringToevoegen_Click(object sender, EventArgs e)
         {
-            DateTime datetime = dtpNieuweVerhuringTijdstip.Value;
-            int uren = Convert.ToInt32(nudNieuweVerhuringUren.Value);
-            switch (cbNieuweVerhuring.SelectedItem.ToString())
+            if(cbNieuweVerhuring.SelectedValue != null)
             {
-                case "Feestzaal":
-                    administratie.VoegToe(new Feestzaal(datetime, uren));
-                    break;
-                case "Danszaal":
-                    administratie.VoegToe(new Danszaal(datetime, uren));
-                    break;
-                case "Bar":
-                    administratie.VoegToe(new Bar(datetime, uren));
-                    break;
-                default:
-                    break;
+                DateTime datetime = dtpNieuweVerhuringTijdstip.Value;
+                int uren = Convert.ToInt32(nudNieuweVerhuringUren.Value);
+                switch (cbNieuweVerhuring.SelectedItem.ToString())
+                {
+                    case "Feestzaal":
+                        administratie.VoegToe(new Feestzaal(datetime, uren));
+                        break;
+                    case "Danszaal":
+                        administratie.VoegToe(new Danszaal(datetime, uren));
+                        break;
+                    case "Bar":
+                        administratie.VoegToe(new Bar(datetime, uren));
+                        break;
+                    default:
+                        break;
+                }
             }
+            else
+            {
+                MessageBox.Show("Er is iets fouts gegaan");
+            }
+
             UpdateVerhuurListBox();
 
         }
@@ -56,27 +65,77 @@ namespace se21_orientatietest
 
         private void btnNieuweVerkoopToevoegen_Click(object sender, EventArgs e)
         {
-            int aantal = Convert.ToInt32(nudNieuweVerkoopAantal.Value);
-            switch(cbNieuweVerkoop.SelectedItem.ToString())
+            if(cbNieuweVerkoop.SelectedValue != null)
             {
-                case "Sterkedrank":
+                int aantal = Convert.ToInt32(nudNieuweVerkoopAantal.Value);
+                switch (cbNieuweVerkoop.SelectedItem.ToString())
+                {
+                    case "Sterkedrank":
+                        {
+                            administratie.VoegToe(new Sterkedrank(aantal));
+                            break;
+                        }
+                    case "Gematigddrank":
+                        {
+                            administratie.VoegToe(new GematigdDrank(aantal));
+                            break;
+                        }
+                    case "Lichtedrank":
+                        {
+                            administratie.VoegToe(new LichteDrank(aantal));
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Er is iets fouts gegaan");
+            }
+
+
+            UpdateVerkoopListBox();
+        }
+
+        private void btnOverzichtDatumbereik_Click(object sender, EventArgs e)
+        {
+            List<IInkomsten> test = administratie.Overzicht(dtpOverzichtVan.Value, dtpOverzichtTot.Value);
+            var message = string.Join(Environment.NewLine, test);
+            MessageBox.Show(message);
+        }
+
+        private void btnOverzichtExporteer_Click(object sender, EventArgs e)
+        {
+            BTWTarief temp = new BTWTarief();
+            switch(cbOverzichtBTW.SelectedItem.ToString())
+            {
+                case "Ongespecificeerd":
                     {
-                        administratie.VoegToe(new Sterkedrank(aantal));
+                        temp = BTWTarief.Ongespecificeerd;
                         break;
                     }
-                case "Gematigddrank":
+                case "Laag":
                     {
-                        administratie.VoegToe(new GematigdDrank(aantal));
+                        temp = BTWTarief.Ongespecificeerd;
                         break;
                     }
-                case "Lichtedrank":
+                case "Hoog":
                     {
-                        administratie.VoegToe(new LichteDrank(aantal));
+                        temp = BTWTarief.Ongespecificeerd;
                         break;
                     }
             }
+            if(temp != null)
+            {
+                if (saveLogDialog.ShowDialog() == DialogResult.OK)
+                {
+                    administratie.Exporteer(saveLogDialog.FileName, temp);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Er is iets fouts gegaan");
+            }
 
-            UpdateVerkoopListBox();
         }
     }
 }

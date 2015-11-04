@@ -54,6 +54,7 @@
             this.dtpOverzichtTot = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpOverzichtVan = new System.Windows.Forms.DateTimePicker();
+            this.saveLogDialog = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNieuweVerhuringUren)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -291,6 +292,7 @@
             this.btnOverzichtExporteer.TabIndex = 13;
             this.btnOverzichtExporteer.Text = "Exporteer";
             this.btnOverzichtExporteer.UseVisualStyleBackColor = true;
+            this.btnOverzichtExporteer.Click += new System.EventHandler(this.btnOverzichtExporteer_Click);
             // 
             // btnOverzichtDatumbereik
             // 
@@ -300,6 +302,7 @@
             this.btnOverzichtDatumbereik.TabIndex = 11;
             this.btnOverzichtDatumbereik.Text = "Toon overzicht voor datumbereik";
             this.btnOverzichtDatumbereik.UseVisualStyleBackColor = true;
+            this.btnOverzichtDatumbereik.Click += new System.EventHandler(this.btnOverzichtDatumbereik_Click);
             // 
             // label7
             // 
@@ -419,6 +422,7 @@
         private System.Windows.Forms.Button btnOverzichtDatumbereik;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnOverzichtExporteer;
+        private System.Windows.Forms.SaveFileDialog saveLogDialog;
     }
 }
 

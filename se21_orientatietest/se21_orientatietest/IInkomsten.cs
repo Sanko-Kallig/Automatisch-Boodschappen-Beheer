@@ -10,6 +10,6 @@ namespace se21_orientatietest
     {
         decimal Bedrag { get; }
         BTWTarief BTWTarief { get; }
-        DateTime Tijdstip { get;  }
+        DateTime Tijdstip { get; }
     }
 }
