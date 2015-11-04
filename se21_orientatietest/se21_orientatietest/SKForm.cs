@@ -106,12 +106,12 @@ namespace se21_orientatietest
                 s = i.Tijdstip.ToString() + " - " + i.BTWTarief.ToString() + " - " + i.Bedrag.ToString();
                 slist.Add(s);
             }
-            var message = string.Join(Environment.NewLine, slist.ToString());
-            MessageBox.Show(slist);
-        }
+            var message = string.Join(Environment.NewLine, test.ToString());
+            MessageBox.Show(message);
+            }
 
-        private void btnOverzichtExporteer_Click(object sender, EventArgs e)
-        {
+            private void btnOverzichtExporteer_Click(object sender, EventArgs e)
+            {
             BTWTarief temp = new BTWTarief();
             switch(cbOverzichtBTW.SelectedItem.ToString())
             {
