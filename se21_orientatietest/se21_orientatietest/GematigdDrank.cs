@@ -9,7 +9,7 @@ namespace se21_orientatietest
     public class GematigdDrank : Verkoop
     {
         public readonly BTWTarief btwtarief = BTWTarief.Hoog;
-        public readonly decimal prijs = 10;
+        public readonly decimal prijs = 5.00M;
         public override BTWTarief BTWTarief { get { return btwtarief; } }
         public override decimal Prijs { get { return prijs; } }
 
@@ -20,7 +20,7 @@ namespace se21_orientatietest
 
         public override string ToString()
         {
-            return base.ToString() + "Gematigd Drank" + "-" + Prijs + "-" + "BTW: " + BTWTarief;
+            return base.ToString() + "Gematigd Drank" + "-" + Prijs + "-" + " - BTW: " + BTWTarief;
         }
     }
 }

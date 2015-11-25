@@ -9,7 +9,7 @@ namespace se21_orientatietest
     public class Bar : Verhuur
     {
         public readonly BTWTarief btwtarief = BTWTarief.Laag;
-        public readonly decimal prijsperuur = 10;
+        public readonly decimal prijsperuur = 25.00M;
         public override BTWTarief BTWTarief { get { return btwtarief; } }
 
         public override decimal PrijsPerUur { get { return prijsperuur; } }
@@ -20,7 +20,7 @@ namespace se21_orientatietest
 
         public override string ToString()
         {
-            return base.ToString() + "Bar -" +"Prijs per uur: "+ PrijsPerUur + "- BTW: " + BTWTarief;
+            return base.ToString() + "Bar -" +"Prijs per uur: "+ PrijsPerUur + " - BTW: " + BTWTarief;
         }
     }
 }

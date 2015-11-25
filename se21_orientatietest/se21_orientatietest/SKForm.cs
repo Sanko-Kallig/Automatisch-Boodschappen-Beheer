@@ -98,20 +98,23 @@ namespace se21_orientatietest
 
         private void btnOverzichtDatumbereik_Click(object sender, EventArgs e)
         {
-            List<IInkomsten> test = administratie.Overzicht(dtpOverzichtVan.Value, dtpOverzichtTot.Value);
-            string s;
-            List<string> slist = new List<string>();
-            foreach(IInkomsten i in test)
+            string message = string.Empty;
+            foreach(Verhuur v in administratie.Overzicht(dtpOverzichtVan.Value, dtpOverzichtTot.Value, false))
             {
-                s = i.Tijdstip.ToString() + " - " + i.BTWTarief.ToString() + " - " + i.Bedrag.ToString();
-                slist.Add(s);
+                message += v.ToString() + Environment.NewLine;
             }
-            var message = string.Join(Environment.NewLine, test.ToString());
+            foreach (Verkoop v in administratie.Overzicht(dtpOverzichtVan.Value, dtpOverzichtTot.Value))
+            {
+                message += v.ToString() + Environment.NewLine;
+            }
             MessageBox.Show(message);
             }
 
             private void btnOverzichtExporteer_Click(object sender, EventArgs e)
             {
+                SaveFileDialog Save = new SaveFileDialog();
+                Save.DefaultExt = ".txt";
+                Save.Filter = "Text file (*.txt)|*.txt|Alle bestanden|*.*";
             BTWTarief temp = new BTWTarief();
             switch(cbOverzichtBTW.SelectedItem.ToString())
             {
@@ -122,25 +125,25 @@ namespace se21_orientatietest
                     }
                 case "Laag":
                     {
-                        temp = BTWTarief.Ongespecificeerd;
+                        temp = BTWTarief.Laag;
                         break;
                     }
                 case "Hoog":
                     {
-                        temp = BTWTarief.Ongespecificeerd;
+                        temp = BTWTarief.Hoog;
                         break;
                     }
             }
-            if(temp != null)
+            if(cbOverzichtBTW.SelectedIndex == -1)
             {
-                if (saveLogDialog.ShowDialog() == DialogResult.OK)
+                if (Save.ShowDialog() == DialogResult.OK)
                 {
-                    administratie.Exporteer(saveLogDialog.FileName, temp);
+                    administratie.Exporteer(Save.FileName, temp);
                 }
             }
             else
             {
-                MessageBox.Show("Er is iets fouts gegaan");
+                MessageBox.Show("Selecteer een BTW Tarief");
             }
 
         }
