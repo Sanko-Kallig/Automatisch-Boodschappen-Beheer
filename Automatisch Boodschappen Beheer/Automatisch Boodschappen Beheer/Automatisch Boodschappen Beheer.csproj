@@ -42,7 +42,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
