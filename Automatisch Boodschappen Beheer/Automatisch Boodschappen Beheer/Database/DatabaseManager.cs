@@ -690,7 +690,30 @@
 
         internal static int GetAccountID(string Email)
         {
-            throw new NotImplementedException();
+            using (OracleConnection connection = Connection)
+            {
+                try
+                {
+                    OracleCommand command = CreateOracleCommand(connection, @"SELECT ""ID"" FROM GEBRUIKER WHERE ""Email"" = :email");
+
+                    command.Parameters.Add(":email", Email);
+
+                    OracleDataReader reader = ExecuteQuery(command);
+
+                    if (!reader.HasRows)
+                    {
+                        throw new Exception(string.Format("No account could be found in the database with this email ({0}).", email));
+                    }
+
+                    reader.Read();
+
+                    return Convert.ToInt32(reader["ID"].ToString());
+                }
+                finally
+                {
+                        connection.Close();
+                }
+            }
         }
     
 internal static bool ModifyGroup(Group Group,Account account)
