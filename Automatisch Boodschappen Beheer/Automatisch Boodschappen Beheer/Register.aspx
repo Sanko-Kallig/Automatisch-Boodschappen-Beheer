@@ -9,8 +9,6 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Login ID="lncRegister" runat="server" OnLoggingIn="OnRegister">
-                <LayoutTemplate>
                     <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
                     &nbsp;<asp:TextBox ID="tbxEmail" runat="server"></asp:TextBox>
                     &nbsp;&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Dit veld is verplicht." ValidationGroup="UserName" ControlToValidate="tbxEmail"></asp:RequiredFieldValidator>
@@ -31,10 +29,7 @@
                     <br />
                     <asp:Literal runat="server"  ID="FailureText" Text="" EnableViewState="False"></asp:Literal>
                     <br  />
-                    <asp:Button ID="btnRegister" runat="server" Text="Login" CommandName="Login" />
-
-                </LayoutTemplate>
-            </asp:Login> 
+                    <asp:Button ID="btnRegister" runat="server" Text="Login" CommandName="Login" OnClick="btnRegister_Click" />
         </div>
     </form>
 </body>

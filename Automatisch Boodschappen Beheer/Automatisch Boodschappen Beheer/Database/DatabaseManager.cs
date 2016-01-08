@@ -445,7 +445,7 @@
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, @"SELECT * FROM GEBRUIKER");
+                    OracleCommand command = CreateOracleCommand(connection, "SELECT * FROM GEBRUIKER");
 
                     OracleDataReader reader = ExecuteQuery(command);
                     List<Account> Accounts = new List<Account>();

@@ -10,7 +10,7 @@ namespace Automatisch_Boodschappen_Beheer
     public partial class Login : System.Web.UI.Page
     {
         public AccountManagement accountManagement;
-        private TextBox tbxUserName;
+        private TextBox tbxEmail;
         private TextBox tbxPassword;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,7 +18,7 @@ namespace Automatisch_Boodschappen_Beheer
             {
                 Response.Redirect("/register.aspx");
             }
-            tbxUserName = ((TextBox)this.LoginControl.FindControl("UserName"));
+            tbxEmail = ((TextBox)this.LoginControl.FindControl("UserName"));
             tbxPassword = ((TextBox)this.LoginControl.FindControl("Password"));
             accountManagement = new AccountManagement();
             if(!this.IsPostBack)
@@ -34,7 +34,7 @@ namespace Automatisch_Boodschappen_Beheer
             {
                 try
                 {
-                    this.Session["Account"] = accountManagement.AuthenticateAccount(tbxUserName.Text, tbxPassword.Text);
+                    this.Session["Account"] = accountManagement.AuthenticateAccount(tbxEmail.Text, tbxPassword.Text);
                     Account account = (Account)this.Session["Account"];
                 }
                 catch
