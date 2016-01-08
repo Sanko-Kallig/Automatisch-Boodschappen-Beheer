@@ -4,15 +4,19 @@ using System.Linq;
 using System.Web;
 
 
-namespace Automatisch_Boodschappen_Beheer.Group
+namespace Automatisch_Boodschappen_Beheer
 {
     public class Group
     {
-        private int ID { get; set; }
-        private string Name { get; set; }
-        private Account.Account Owner { get; set; }
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public Account Owner { get; set; }
 
-        public Group(int id, string name, Account.Account owner)
+        public List<Account> Users { get; set; }
+
+        public List<GroceryList> Grocerylists { get; set; }
+
+        public Group(string id, string name, Account owner)
         {
             this.ID = id;
             this.Name = name;

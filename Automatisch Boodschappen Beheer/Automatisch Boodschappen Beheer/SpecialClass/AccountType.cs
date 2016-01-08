@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
     using System.Web;
 
-namespace Automatisch_Boodschappen_Beheer.SpecialClass
+namespace Automatisch_Boodschappen_Beheer
 {
     public enum AccountType
     {

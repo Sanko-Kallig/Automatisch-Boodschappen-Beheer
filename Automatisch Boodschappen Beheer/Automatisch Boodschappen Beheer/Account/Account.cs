@@ -4,31 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Automatisch_Boodschappen_Beheer.SpecialClass;
 
-namespace Automatisch_Boodschappen_Beheer.Account
+namespace Automatisch_Boodschappen_Beheer
 {
     public class Account
     {
-        private int ID { get; set; }
+        #region Fields
+        private int id = -1;
+        #endregion Fields
 
-        private string Email { get; set; }
-
-        private string FirstName { get; set; }
-
-        private string Prefix { get; set; }
-
-        private string LastName { get; set; }
-
-        private AccountType Role { get; set; }
-
-        public Account(int id, string email, string firstName, string prefix, string lastName, AccountType role)
+        public int ID
         {
-            this.ID = id;
+            get
+            {
+                if (id == -1)
+                { return DatabaseManager.GetAccountID(Email); }
+                else
+                {
+                    return id;
+                }
+            }
+            set { id = value; }
+        }
+
+        public string Email { get; set; }
+
+        public string Name { get; set; }
+
+        public AccountType Role { get; set; }
+
+        public Account(string email, string name, AccountType role)
+        {
             this.Email = email;
-            this.FirstName = firstName;
-            this.Prefix = prefix;
-            this.LastName = lastName;
+            this.Name = name;
             this.Role = role;
         }
     }

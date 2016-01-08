@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Automatisch_Boodschappen_Beheer.SpecialClass
+namespace Automatisch_Boodschappen_Beheer
 {
-    interface Statistic
+    public interface IStatistic
     {
+        double CalculateStatistics(List<double> numbers);
     }
 }
