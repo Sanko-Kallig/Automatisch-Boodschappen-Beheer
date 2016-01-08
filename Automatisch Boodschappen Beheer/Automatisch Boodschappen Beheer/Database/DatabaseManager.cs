@@ -59,7 +59,7 @@
 
                 return reader;
             }
-            catch(OracleException exc)
+            catch (OracleException exc)
             {
                 Debug.WriteLine(exc.Message);
                 return null;
@@ -110,7 +110,7 @@
                         }
                     }
                     connection.Close();
-                    foreach(Group group in Groups)
+                    foreach (Group group in Groups)
                     {
                         group.Users = GetGroupAccounts(group);
                     }
@@ -133,16 +133,16 @@
                     command.Parameters.Add(":GroupID", group.ID);
                     OracleDataReader reader = ExecuteQuery(command);
                     List<Account> Accounts = new List<Account>();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         try
                         {
                             string email = reader["Email"].ToString();
                             string name = reader["Naam"].ToString();
-                            AccountType role = (AccountType) Enum.Parse(typeof(AccountType), reader["rol"].ToString());
+                            AccountType role = (AccountType)Enum.Parse(typeof(AccountType), reader["rol"].ToString());
                             Accounts.Add(new Account(email, name, role));
                         }
-                        catch(Exception exc)
+                        catch (Exception exc)
                         {
                             Debug.WriteLine(exc.Message);
                             continue;
@@ -159,7 +159,7 @@
 
         public static bool AddGroupUser(Group group, Account account)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -216,7 +216,7 @@
 
         public static bool CreateGroup(Group group)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -230,12 +230,12 @@
                         throw new Exception("The group could not be added to the database.");
                     }
                     OracleCommand ownerCommand = CreateOracleCommand(connection, "INSERT INTO GROEP_EIGENAAR(GROEP_ID, GEBRUIKER_ID) VALUES (:groupID, :ownerID");
-                        ownerCommand.Parameters.Add(":groupID", group.ID);
-                        ownerCommand.Parameters.Add(":ownerID", group.Owner.ID);
+                    ownerCommand.Parameters.Add(":groupID", group.ID);
+                    ownerCommand.Parameters.Add(":ownerID", group.Owner.ID);
 
                     return ExecuteNonQuery(ownerCommand);
                 }
-                catch(OracleException exc)
+                catch (OracleException exc)
                 {
                     Debug.WriteLine(exc.Message);
                     return false;
@@ -277,7 +277,7 @@
                             }
                         }
                         connection.Close();
-                        foreach(Product p in Products)
+                        foreach (Product p in Products)
                         {
                             p.ModifiedBy = ProductModifiedBy(p);
                         }
@@ -321,7 +321,7 @@
 
         public static Product CreateProduct(Product product, Account account)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -358,13 +358,13 @@
                     return null;
                     throw new Exception("The product could not be added to the database.");
                 }
-               finally
+                finally
                 {
                     connection.Close();
                 }
             }
         }
-        
+
         public static bool ModifyProduct(Product product, Account account)
         {
             using (OracleConnection connection = Connection)
@@ -459,16 +459,16 @@
 
                     OracleDataReader reader = ExecuteQuery(command);
                     List<Account> Accounts = new List<Account>();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         try
                         {
                             string email = reader["Email"].ToString();
                             string name = reader["Naam"].ToString();
-                            AccountType rol = (AccountType) Enum.Parse(typeof(AccountType), reader["rol"].ToString());
+                            AccountType rol = (AccountType)Enum.Parse(typeof(AccountType), reader["rol"].ToString());
                             Accounts.Add(new Account(email, name, rol));
                         }
-                        catch(Exception exc)
+                        catch (Exception exc)
                         {
                             Debug.WriteLine(exc.Message);
                             continue;
@@ -491,41 +491,41 @@
                 {
                     OracleCommand command = CreateOracleCommand(connection, "INSERT INTO GEBRUIKER(EMAIL, WACHTWOORD, NAAM) VALUES (:email, :password, :name)");
 
-                    
+
                     command.Parameters.Add(":email", account.Email);
                     command.Parameters.Add(":password", password);
                     command.Parameters.Add(":name", account.Name);
 
                     bool isAdded = ExecuteNonQuery(command);
 
-                if (!isAdded)
-                {
-                    throw new Exception("The account could not be added to the database.");
+                    if (!isAdded)
+                    {
+                        throw new Exception("The account could not be added to the database.");
+                    }
+
+                    // Fetch database ID of account
+                    OracleCommand commandID = CreateOracleCommand(connection, "SELECT ID FROM GEBRUIKER WHERE Email = :email");
+                    commandID.Parameters.Add(":email", account.Email);
+
+                    OracleDataReader reader = ExecuteQuery(commandID);
+
+                    reader.Read();
+
+                    int id = Convert.ToInt32(reader["ID"].ToString());
+
+                    account.ID = id;
+
+
+                    return account;
                 }
-
-                // Fetch database ID of account
-                OracleCommand commandID = CreateOracleCommand(connection, "SELECT ID FROM GEBRUIKER WHERE Email = :email");
-                commandID.Parameters.Add(":email", account.Email);
-
-                OracleDataReader reader = ExecuteQuery(commandID);
-
-                reader.Read();
-
-                int id = Convert.ToInt32(reader["ID"].ToString());
-
-                account.ID = id;
-
-
-                return account;
-            }
-                catch(OracleException exc)
+                catch (OracleException exc)
                 {
-                    
+
                     Debug.WriteLine(exc.Message);
                     return null;
                 }
-            finally
-            {
+                finally
+                {
                     connection.Close();
                 }
             }
@@ -554,7 +554,7 @@
 
         public static bool DeleteAccount(Account account)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -573,7 +573,7 @@
 
         public static List<Product> GetGroceryProducts(Grocerylist groceryList)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -582,7 +582,7 @@
                     OracleDataReader reader = ExecuteQuery(command);
                     List<Product> products = new List<Product>();
 
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"].ToString());
                         string name = reader["naam"].ToString();
@@ -603,7 +603,7 @@
 
         public static Product AddProductToGroceryList(Product product, Account account, GroceryList groceries)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -652,12 +652,12 @@
                     connection.Close();
                 }
             }
-            
+
         }
 
         public static List<Product> GetCostsAccounts(Account account)
         {
-            using(OracleConnection connection = Connection)
+            using (OracleConnection connection = Connection)
             {
                 try
                 {
@@ -702,7 +702,7 @@
 
                     if (!reader.HasRows)
                     {
-                        throw new Exception(string.Format("No account could be found in the database with this email ({0}).", email));
+                        throw new Exception(string.Format("No account could be found in the database with this email ({0}).", Email));
                     }
 
                     reader.Read();
@@ -711,13 +711,9 @@
                 }
                 finally
                 {
-                        connection.Close();
+                    connection.Close();
                 }
             }
         }
-    
-internal static bool ModifyGroup(Group Group,Account account)
-{
- 	throw new NotImplementedException();
-}}
+    }
 }

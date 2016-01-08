@@ -48,19 +48,6 @@ namespace Automatisch_Boodschappen_Beheer
             }
         }
 
-        public bool UpdateGroup(Group Group, Account account)
-        {
-
-            if (DatabaseManager.ModifyGroup(Group, account))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public List<Group> OwnerGroups(Account account)
         {
             List<Group> tempGroups = new List<Group>();
