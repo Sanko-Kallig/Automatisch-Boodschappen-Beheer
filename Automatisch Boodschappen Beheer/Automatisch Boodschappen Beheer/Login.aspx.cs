@@ -14,10 +14,6 @@ namespace Automatisch_Boodschappen_Beheer
         private TextBox tbxPassword;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["Account"] == null)
-            {
-                Response.Redirect("/register.aspx");
-            }
             tbxEmail = ((TextBox)this.LoginControl.FindControl("UserName"));
             tbxPassword = ((TextBox)this.LoginControl.FindControl("Password"));
             accountManagement = new AccountManagement();
@@ -41,6 +37,10 @@ namespace Automatisch_Boodschappen_Beheer
                 {
                     ((Literal)this.LoginControl.FindControl("FailureText")).Text = "Gebruikersnaam en/of wachtwoord is fout";
                     e.Cancel = true;
+                }
+                if(Session["Account"] != null)
+                {
+                    Response.Redirect("/index.aspx");
                 }
             }
         }

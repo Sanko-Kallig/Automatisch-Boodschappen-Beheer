@@ -59,8 +59,9 @@
 
                 return reader;
             }
-            catch
+            catch(OracleException exc)
             {
+                Debug.WriteLine(exc.Message);
                 return null;
             }
         }
@@ -86,7 +87,7 @@
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, @"select g.id as GroepID, g.naam as GroepNaam, a.ID as GebruikerID, a.Email, a.naam as GebruikerNaam, a.status, a.ROL from groep g, gebruiker a, groep_eigenaar e  where e.groep_ID = g.ID AND e.gebruiker_ID = a.ID;");
+                    OracleCommand command = CreateOracleCommand(connection, @"select g.id as GroepID, g.naam as GroepNaam, a.ID as GebruikerID, a.Email, a.naam as GebruikerNaam, a.status, a.ROL from groep g, gebruiker a, groep_eigenaar e where e.groep_ID = g.ID AND e.gebruiker_ID = a.ID");
 
                     OracleDataReader reader = ExecuteQuery(command);
                     List<Group> Groups = new List<Group>();
@@ -102,7 +103,7 @@
                             Account owner = new Account(email, accountname, role);
                             Groups.Add(new Group(groupid, groupname, owner));
                         }
-                        catch (Exception exc)
+                        catch (OracleException exc)
                         {
                             Debug.WriteLine(exc.Message);
                             continue;
@@ -128,7 +129,7 @@
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, "SELECT ID, EMAIL, NAAM, ROL FROM GEBRUIKER, GROEP_GEBRUIKERS WHERE ID = GROEP_GEBRUIKERS.GEBRUIKER_ID AND GROEP_GEBRUIKERS.GROEP_ID = :GroupID;");
+                    OracleCommand command = CreateOracleCommand(connection, "SELECT ID, EMAIL, NAAM, ROL FROM GEBRUIKER, GROEP_GEBRUIKERS WHERE ID = GROEP_GEBRUIKERS.GEBRUIKER_ID AND GROEP_GEBRUIKERS.GROEP_ID = :GroupID");
                     command.Parameters.Add(":GroupID", group.ID);
                     OracleDataReader reader = ExecuteQuery(command);
                     List<Account> Accounts = new List<Account>();
@@ -213,22 +214,31 @@
             }
         }
 
-        public static bool CreateGroup(Group group, Account account)
+        public static bool CreateGroup(Group group)
         {
             using(OracleConnection connection = Connection)
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, "INSERT INTO GROUP(ID, NAAM, EIGENAAR) VALUES(SEQ_GROEPNEXTVAL, :name, :accountID);");
+                    OracleCommand command = CreateOracleCommand(connection, "INSERT INTO GROEP(ID, NAAM) VALUES(:id, :name)");
+                    command.Parameters.Add(":id", group.ID);
                     command.Parameters.Add(":name", group.Name);
-                    command.Parameters.Add(":accountID", account.ID);
 
-                    return ExecuteNonQuery(command);
+                    bool isAdded = ExecuteNonQuery(command);
+                    if (!isAdded)
+                    {
+                        throw new Exception("The group could not be added to the database.");
+                    }
+                    OracleCommand ownerCommand = CreateOracleCommand(connection, "INSERT INTO GROEP_EIGENAAR(GROEP_ID, GEBRUIKER_ID) VALUES (:groupID, :ownerID");
+                        ownerCommand.Parameters.Add(":groupID", group.ID);
+                        ownerCommand.Parameters.Add(":ownerID", group.Owner.ID);
 
+                    return ExecuteNonQuery(ownerCommand);
                 }
-                catch
+                catch(OracleException exc)
                 {
-                    throw new Exception("The group could not be added to the database.");
+                    Debug.WriteLine(exc.Message);
+                    return false;
                 }
                 finally
                 {
@@ -479,13 +489,12 @@
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, "INSERT INTO GEBRUIKER(ID, EMAIL, WACHTWOORD, NAAM, ROL) VALUES (SEQ_GEBRUIKERID.NEXTVAL, :email, :password, :name, :rol");
+                    OracleCommand command = CreateOracleCommand(connection, "INSERT INTO GEBRUIKER(EMAIL, WACHTWOORD, NAAM) VALUES (:email, :password, :name)");
 
                     
                     command.Parameters.Add(":email", account.Email);
                     command.Parameters.Add(":password", password);
                     command.Parameters.Add(":name", account.Name);
-                    command.Parameters.Add(":Role", account.Role.ToString());
 
                     bool isAdded = ExecuteNonQuery(command);
 
@@ -495,7 +504,8 @@
                 }
 
                 // Fetch database ID of account
-                OracleCommand commandID = CreateOracleCommand(connection, "SELECT SEQ_GEBRUIKERID.CURRVAL AS ID FROM DUAL");
+                OracleCommand commandID = CreateOracleCommand(connection, "SELECT ID FROM GEBRUIKER WHERE Email = :email");
+                commandID.Parameters.Add(":email", account.Email);
 
                 OracleDataReader reader = ExecuteQuery(commandID);
 
@@ -508,6 +518,12 @@
 
                 return account;
             }
+                catch(OracleException exc)
+                {
+                    
+                    Debug.WriteLine(exc.Message);
+                    return null;
+                }
             finally
             {
                     connection.Close();
@@ -616,7 +632,7 @@
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, "SELECT ID, Email, naam, rol FROM ACCOUNT WHERE email = :Email AND status = '1' AND wachtwoord = :Password");
+                    OracleCommand command = CreateOracleCommand(connection, "SELECT ID, Email, naam, rol FROM GEBRUIKER WHERE email = :Email AND status = '1' AND wachtwoord = :Password");
                     command.Parameters.Add(":Email", email);
                     command.Parameters.Add(":Password", password);
 
@@ -660,7 +676,7 @@
         {
             int accountID = Convert.ToInt32(reader["ID"].ToString());
             string email = reader["email"].ToString();
-            string name = reader["voornaam"].ToString();
+            string name = reader["naam"].ToString();
             string role = reader["rol"].ToString();
 
             AccountType accountType;

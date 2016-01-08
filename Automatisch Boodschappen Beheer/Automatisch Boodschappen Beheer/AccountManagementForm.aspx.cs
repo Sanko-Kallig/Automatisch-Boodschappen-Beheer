@@ -10,9 +10,10 @@ namespace Automatisch_Boodschappen_Beheer
     public partial class AccountManagementForm : System.Web.UI.Page
     {
         static AccountManagement am;
+        Account account;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Account account = (Account)this.Session["Account"];
+            account = (Account)this.Session["Account"];
             if (account != null)
             {
                 if (!IsPostBack)
@@ -30,7 +31,9 @@ namespace Automatisch_Boodschappen_Beheer
                             }
                         case AccountType.User:
                             {
-                                lbxAccounts.DataSource = account;
+                                List<Account> accounts = new List<Account>();
+                                accounts.Add(account);
+                                lbxAccounts.DataSource = accounts;
                                 lbxAccounts.DataBind();
                                 ddlRole.Enabled = false;
                                 break;
@@ -63,9 +66,19 @@ namespace Automatisch_Boodschappen_Beheer
 
         protected void lbxAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.tbxName.Text = am.Accounts[lbxAccounts.SelectedIndex].Name;
+            if(account.Role != AccountType.Admin)
+            {
+                this.tbxName.Text = account.Name;
+                this.tbxEmail.Text = account.Email;
+                this.ddlRole.SelectedValue = account.Role.ToString();
+            }
+            else
+            {
+             this.tbxName.Text = am.Accounts[lbxAccounts.SelectedIndex].Name;
             this.tbxEmail.Text = am.Accounts[lbxAccounts.SelectedIndex].Email;
             this.ddlRole.SelectedValue = am.Accounts[lbxAccounts.SelectedIndex].Role.ToString();
+            }
+
         }
 
         protected void btnDisableAccount_Click(object sender, EventArgs e)

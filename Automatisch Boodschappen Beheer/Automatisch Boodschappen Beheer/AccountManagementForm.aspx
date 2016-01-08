@@ -17,6 +17,9 @@
         <asp:Label ID="lblRole" runat="server" Text="Role:"></asp:Label>
         <br />
         <asp:DropDownList ID="ddlRole" runat="server">
+            <asp:ListItem>User</asp:ListItem>
+            <asp:ListItem></asp:ListItem>
+            <asp:ListItem>Admin</asp:ListItem>
         </asp:DropDownList>
         <br />
         <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>

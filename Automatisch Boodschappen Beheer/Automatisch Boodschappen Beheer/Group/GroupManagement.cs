@@ -32,13 +32,13 @@ namespace Automatisch_Boodschappen_Beheer
             return null;
         }
 
-        public bool CreateGroup(Group group, Account account)
+        public bool CreateGroup(Group group)
         {
             Random random = new Random();
             group.ID = GenerateKey(8, random);
             try
             {
-                DatabaseManager.CreateGroup(group, account);
+                DatabaseManager.CreateGroup(group);
                 this.Groups = this.RequestGroups();
                 return true;
             }

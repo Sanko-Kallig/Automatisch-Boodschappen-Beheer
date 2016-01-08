@@ -39,5 +39,10 @@ namespace Automatisch_Boodschappen_Beheer
             this.Name = name;
             this.Role = role;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

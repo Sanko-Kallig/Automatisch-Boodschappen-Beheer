@@ -19,6 +19,7 @@ namespace Automatisch_Boodschappen_Beheer
         {
             if (Session["ACCOUNT"] != null)
             {
+                IsLoggedIn = true;
                 Account account = (Account)Session["ACCOUNT"];
                 lbWelkom.Text = "(Welkom " + account.Name + ")";
             }

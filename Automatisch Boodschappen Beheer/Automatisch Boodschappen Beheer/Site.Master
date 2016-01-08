@@ -23,14 +23,17 @@
                 <% }
                    else
                    { %>
-                <li>
-                    <asp:Hyperlink href="/GroupManagement.aspx" runat="Server">Group settings</asp:Hyperlink>
+                                <li>
+                    <asp:Hyperlink href="/CreateGroup.aspx" runat="Server">Create Group</asp:Hyperlink>
                 </li>
                 <li>
-                    <asp:Hyperlink href="/AccountManagement.aspx" runat="Server">Account settings</asp:Hyperlink>
+                    <asp:Hyperlink href="/GroupManagementForm.aspx" runat="Server">Group settings</asp:Hyperlink>
                 </li>
                 <li>
-                    <asp:HyperLink href="/ProductManagement.aspx" runat="server">Products</asp:HyperLink></li>
+                    <asp:Hyperlink href="/AccountManagementForm.aspx" runat="Server">Account settings</asp:Hyperlink>
+                </li>
+                <li>
+                    <asp:HyperLink href="/ProductManagementForm.aspx" runat="server">Products</asp:HyperLink></li>
                 <li>
                     <asp:HyperLink href="/Grocerylist.aspx" runat="server">Grocery list</asp:HyperLink></li>
                 <li><asp:HyperLink href="/logout.aspx" runat="server">
