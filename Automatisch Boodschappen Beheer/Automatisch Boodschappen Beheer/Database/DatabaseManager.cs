@@ -616,7 +616,7 @@
             {
                 try
                 {
-                    OracleCommand command = CreateOracleCommand(connection, "SELECT ID, Email, naam, rol FROM ACCOUNT WHERE email = :Email AND status = '1' AND wachtwoord = :Password AND ID IN ( SELECT ACCOUNT_ID FROM REMISE_ACCOUNT WHERE REMISE_ID = :TramDepotID )");
+                    OracleCommand command = CreateOracleCommand(connection, "SELECT ID, Email, naam, rol FROM ACCOUNT WHERE email = :Email AND status = '1' AND wachtwoord = :Password");
                     command.Parameters.Add(":Email", email);
                     command.Parameters.Add(":Password", password);
 
@@ -639,9 +639,20 @@
             
         }
 
-        public static List<double> GetCostsAccounts(Account account)
+        public static List<Product> GetCostsAccounts(Account account)
         {
-            throw new NotImplementedException();
+            using(OracleConnection connection = Connection)
+            {
+                try
+                {
+                    OracleCommand command = CreateOracleCommand(connection, "");
+                    return null;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
         }
 
 

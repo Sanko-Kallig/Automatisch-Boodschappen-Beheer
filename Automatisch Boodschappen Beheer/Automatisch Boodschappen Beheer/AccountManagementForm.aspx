@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountManagement.aspx.cs" Inherits="Automatisch_Boodschappen_Beheer.AccountManagementForm" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="AccountManagementForm.aspx.cs" Inherits="Automatisch_Boodschappen_Beheer.AccountManagementForm" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
         <div style="border: 1px solid #D3D3D3; margin-bottom: 16px">
            <asp:ListBox ID="lbxAccounts" runat="server" AutoPostBack="True" OnSelectedIndexChanged="lbxAccounts_SelectedIndexChanged"></asp:ListBox> 
             <br />
@@ -39,8 +33,5 @@
             <asp:Button ID="btnDisableAccount" runat="server" OnClick="btnDisableAccount_Click" Text="Disable Account" />
     
         </div>
-
-    </form>
-</body>
-</html>
+</asp:Content>
 

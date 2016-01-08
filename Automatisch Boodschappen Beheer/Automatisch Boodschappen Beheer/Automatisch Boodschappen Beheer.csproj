@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,11 +41,10 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\Oracle.DataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -64,8 +64,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ProductManagement.aspx" />
-    <Content Include="Site1.Master" />
+    <Content Include="index.aspx" />
+    <Content Include="ProductManagementForm.aspx" />
+    <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -74,22 +75,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AccountManagement.aspx" />
+    <Content Include="AccountManagementForm.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Grocerylist.aspx" />
-    <Content Include="GroupManagement.aspx" />
+    <Content Include="GroupManagementForm.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Static\CSS\custom.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountManagement.aspx.cs">
-      <DependentUpon>AccountManagement.aspx</DependentUpon>
+    <Compile Include="AccountManagementForm.aspx.cs">
+      <DependentUpon>AccountManagementForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AccountManagement.aspx.designer.cs">
-      <DependentUpon>AccountManagement.aspx</DependentUpon>
+    <Compile Include="AccountManagementForm.aspx.designer.cs">
+      <DependentUpon>AccountManagementForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Account.cs" />
     <Compile Include="Account\AccountManagement.cs" />
@@ -104,17 +105,22 @@
     <Compile Include="Grocerylist.aspx.designer.cs">
       <DependentUpon>Grocerylist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GroupManagement.aspx.cs">
-      <DependentUpon>GroupManagement.aspx</DependentUpon>
+    <Compile Include="GroupManagementForm.aspx.cs">
+      <DependentUpon>GroupManagementForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GroupManagement.aspx.designer.cs">
-      <DependentUpon>GroupManagement.aspx</DependentUpon>
+    <Compile Include="GroupManagementForm.aspx.designer.cs">
+      <DependentUpon>GroupManagementForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Group\GroceryList.cs" />
     <Compile Include="Group\Group.cs" />
-    <Compile Include="Group\GroupManagement.cs">
+    <Compile Include="Group\GroupManagement.cs" />
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -124,12 +130,12 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="SpecialClass\AverageStatistic.cs" />
-    <Compile Include="ProductManagement.aspx.cs">
-      <DependentUpon>ProductManagement.aspx</DependentUpon>
+    <Compile Include="ProductManagementForm.aspx.cs">
+      <DependentUpon>ProductManagementForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProductManagement.aspx.designer.cs">
-      <DependentUpon>ProductManagement.aspx</DependentUpon>
+    <Compile Include="ProductManagementForm.aspx.designer.cs">
+      <DependentUpon>ProductManagementForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\ProductManagement.cs" />
@@ -141,12 +147,12 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site1.Master.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site1.Master.designer.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="SpecialClass\AccountType.cs" />
     <Compile Include="SpecialClass\IStatistic.cs" />

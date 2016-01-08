@@ -13,15 +13,6 @@ namespace Automatisch_Boodschappen_Beheer {
     public partial class AccountManagementForm {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// lbxAccounts control.
         /// </summary>
         /// <remarks>

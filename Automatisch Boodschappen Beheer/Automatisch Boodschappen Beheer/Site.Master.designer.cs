@@ -10,7 +10,16 @@
 namespace Automatisch_Boodschappen_Beheer {
     
     
-    public partial class ProductManagementForm {
+    public partial class Site1 {
+        
+        /// <summary>
+        /// head control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
         /// form1 control.
@@ -22,21 +31,21 @@ namespace Automatisch_Boodschappen_Beheer {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lbxProducts control.
+        /// lbWelkom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbxProducts;
+        protected global::System.Web.UI.WebControls.Label lbWelkom;
         
         /// <summary>
-        /// btnDeleteProduct control.
+        /// MainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteProduct;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

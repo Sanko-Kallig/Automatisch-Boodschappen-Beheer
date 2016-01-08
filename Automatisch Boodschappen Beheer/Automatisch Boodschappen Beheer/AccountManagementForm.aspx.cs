@@ -40,7 +40,7 @@ namespace Automatisch_Boodschappen_Beheer
             }
             else
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/Index.aspx");
             }
         }
 

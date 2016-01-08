@@ -80,10 +80,10 @@ namespace Automatisch_Boodschappen_Beheer
         public double CostsAccount(Account account)
         {
             totalCost = 0;
-            List<double> accountCosts = DatabaseManager.GetCostsAccounts(account);
-            foreach (double d in accountCosts)
+            List<Product> Products = DatabaseManager.GetCostsAccounts(account);
+            foreach (Product product in Products)
             {
-                totalCost += d;
+                totalCost += product.Price;
             }
 
             return totalCost;

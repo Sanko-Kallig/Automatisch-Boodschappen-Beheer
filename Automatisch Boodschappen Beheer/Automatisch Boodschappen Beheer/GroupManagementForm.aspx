@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GroupManagement.aspx.cs" Inherits="Automatisch_Boodschappen_Beheer.GroupManagement" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="GroupManagementForm.aspx.cs" Inherits="Automatisch_Boodschappen_Beheer.GroupManagementForm" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
         <div style="border: 1px solid #D3D3D3; margin-bottom: 16px">
             <asp:Label ID="lblGroups" runat="server" Text="Group"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -25,12 +19,8 @@
         <br />
         <br />
         <asp:Button ID="btnModifyGroup" runat="server" Text="Modify Group" OnClick="btnModifyGroup_Click" />
-    
             <asp:Button ID="btnDisableGroup" runat="server" OnClick="btnDisableGroup_Click" Text="Disable Account" />
     
         </div>
-
-    </form>
-</body>
-</html>
+</asp:Content>
 

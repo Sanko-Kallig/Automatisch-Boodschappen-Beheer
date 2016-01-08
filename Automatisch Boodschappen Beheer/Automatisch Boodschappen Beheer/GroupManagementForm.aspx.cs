@@ -24,7 +24,6 @@ namespace Automatisch_Boodschappen_Beheer
                     {
                         case AccountType.Admin:
                             {
-                                                       
                                 lbxGroups.DataSource = gm.Groups;
                                 lbxGroups.DataBind();
                                 lbxAccounts.DataSource = gm.Groups[lbxGroups.SelectedIndex].Users;
@@ -45,7 +44,7 @@ namespace Automatisch_Boodschappen_Beheer
             }
             else
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/Index.aspx");
                     
             }
         }
@@ -71,6 +70,11 @@ namespace Automatisch_Boodschappen_Beheer
         protected void btnModifyGroup_Click(object sender, EventArgs e)
         {
         
+        }
+
+        protected void btnDisableGroup_Click(object sender, EventArgs e)
+        {
+
         }
         }
     }

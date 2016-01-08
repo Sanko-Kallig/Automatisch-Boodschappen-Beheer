@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Automatisch_Boodschappen_Beheer.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Static/CSS/custom.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <ul>
+
+                <% if (!IsLoggedIn)
+                   { %>
+                <li>
+                    <asp:HyperLink href="/Login.aspx" runat="server">Login</asp:HyperLink></li>
+                <li>
+                    <asp:HyperLink href="/Register.aspx" runat="server">Register</asp:HyperLink></li>
+                <% }
+                   else
+                   { %>
+                <li>
+                    <asp:Hyperlink href="/GroupManagement.aspx" runat="Server">Group settings</asp:Hyperlink>
+                </li>
+                <li>
+                    <asp:Hyperlink href="/AccountManagement.aspx" runat="Server">Account settings</asp:Hyperlink>
+                </li>
+                <li>
+                    <asp:HyperLink href="/ProductManagement.aspx" runat="server">Products</asp:HyperLink></li>
+                <li>
+                    <asp:HyperLink href="/Grocerylist.aspx" runat="server">Grocery list</asp:HyperLink></li>
+                <li><asp:HyperLink href="/logout.aspx" runat="server">
+                    <asp:Label ID="lbWelkom" runat="server" Text=""></asp:Label>Uitloggen</asp:HyperLink></li>
+                <%} %>
+            </ul>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+            </form>
+        </body>
+</html>
