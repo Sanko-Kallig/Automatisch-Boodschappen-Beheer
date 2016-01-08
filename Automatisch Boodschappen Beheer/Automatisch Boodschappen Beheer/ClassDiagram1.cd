@@ -1,2 +1,133 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Automatisch_Boodschappen_Beheer.RangeStatistic" BaseTypeListCollapsed="true">
+    <Position X="8" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialClass\RangeStatistic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.758" />
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.AverageStatistic" BaseTypeListCollapsed="true">
+    <Position X="12" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialClass\AverageStatistic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.MedianStatistic" BaseTypeListCollapsed="true">
+    <Position X="10" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialClass\MedianStatistic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.817" />
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.Account">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAEEAAAAAQAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Account\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.AccountManagement">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Accounts" Type="Automatisch_Boodschappen_Beheer.Account" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.656" Y="3.594" />
+        <Point X="6.656" Y="3.75" />
+        <Point X="7.438" Y="3.75" />
+        <Point X="7.438" Y="4" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAARQAAQAAAQACCAAAAAgAAAEA=</HashCode>
+      <FileName>Account\AccountManagement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Accounts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.DatabaseManager">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAAAAAEAAAAAEgQYAIBGgAAAAIAQQGQQAAASBAAAQ=</HashCode>
+      <FileName>Database\DatabaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.GroceryList">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Group\GroceryList.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.Group">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACCAAAAAgAAACAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Group\Group.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Grocerylists" />
+      <Property Name="Users" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.GroupManagement">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Groups" Type="Automatisch_Boodschappen_Beheer.Group" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.142" />
+        <Point X="4.25" Y="3.517" />
+        <Point X="4.938" Y="3.517" />
+        <Point X="4.938" Y="4.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAkAAAABAAAEAAAAAAAAAAAAQAAAAAAAAIABAAAQ=</HashCode>
+      <FileName>Group\GroupManagement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Groups" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.Product">
+    <Position X="1.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAQAAgAAABAAAAAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Product\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Automatisch_Boodschappen_Beheer.ProductManagement">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAIAACAAAAAAAgAAAAAAIAAAAQ=</HashCode>
+      <FileName>Product\ProductManagement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Interface Name="Automatisch_Boodschappen_Beheer.IStatistic">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialClass\IStatistic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Automatisch_Boodschappen_Beheer.AccountType" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialClass\AccountType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
