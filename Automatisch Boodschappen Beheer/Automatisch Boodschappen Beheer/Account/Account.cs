@@ -35,6 +35,7 @@ namespace Automatisch_Boodschappen_Beheer
 
         public Account(string email, string name, AccountType role)
         {
+            id = -1;
             this.Email = email;
             this.Name = name;
             this.Role = role;

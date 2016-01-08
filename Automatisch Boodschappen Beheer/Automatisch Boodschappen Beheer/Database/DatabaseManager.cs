@@ -433,7 +433,7 @@
 
                     if (!reader.HasRows)
                     {
-                        throw new Exception(string.Format("No account could be found in the database with this email ({0}).", email));
+                        throw new Exception(string.Format("No account could be found in the database with this email ({0}).", Email));
                     }
 
                     reader.Read();
